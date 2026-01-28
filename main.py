@@ -12,7 +12,7 @@ HOST = os.getenv("DB_HOST")
 USER = os.getenv("DB_USERNAME")          # change if your user is different
 PASSWORD = os.getenv("DB_PASSWORD")
 PORT = 3306
-DATABASE = "dfos_sidwal"  # replace with actual DB name
+DATABASE = "dfos_solex"  # replace with actual DB name
 
 
 # --- SQLAlchemy connection URL ---
@@ -33,8 +33,8 @@ except Exception as e:
 import pandas as pd
 from collections import OrderedDict
 _GRAPH_ = []
-WFI = 512
-SID = 895
+WFI = 1
+SID = 16840
 
 def load_cte(name: str, mfi=WFI):
     with open("get_workflow.sql", "r", encoding="utf-8") as f:
@@ -310,3 +310,6 @@ def get_audit_query():
     with open('audit_query.sql','w') as f:
         f.write(f"""{get_workflow_query()}\n{get_dataset_queries()} \n SELECT * FROM datasets""")
 
+import os
+print("Python is looking in:", os.getcwd())
+print("Does the file exist here?", os.path.exists("get_workflow.sql"))
